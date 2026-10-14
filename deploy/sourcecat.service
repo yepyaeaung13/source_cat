@@ -1,0 +1,25 @@
+[Unit]
+Description=SourceCat Phoenix
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=sourcecat
+Group=sourcecat
+WorkingDirectory=/opt/sourcecat
+EnvironmentFile=/etc/sourcecat.env
+Environment=RELEASE_TMP=/var/lib/sourcecat/runtime
+ExecStart=/opt/sourcecat/bin/source_cat start
+Restart=on-failure
+RestartSec=5
+StateDirectory=sourcecat
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/sourcecat
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

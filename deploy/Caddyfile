@@ -1,0 +1,5 @@
+# Replace this hostname with your domain and point DNS at the VPS.
+sourcecat.example.com {
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:4000
+}
